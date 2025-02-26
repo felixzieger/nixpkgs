@@ -25,7 +25,7 @@ stdenv.mkDerivation {
   src = fetchgit {
     url = "https://github.com/hoytech/strfry.git";
     rev = "1.0.4";
-    sha256 = "sha256-AcEALgq3q93gAYQ3RnhyMMqaO+XAn+GSOQp8qW+N+DE=";
+    sha256 = "sha256-2+kPUgyb9ZtC51EK66d3SX2zyqnS6lju2jkIhakcudg=";
     fetchSubmodules = true;
   };
 
