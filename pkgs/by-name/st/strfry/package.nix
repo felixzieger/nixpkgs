@@ -23,6 +23,7 @@ stdenv.mkDerivation {
     rev = "1.0.4";
     sha256 = "sha256-2+kPUgyb9ZtC51EK66d3SX2zyqnS6lju2jkIhakcudg=";
     fetchSubmodules = true;
+    leaveDotGit = true;
   };
 
   nativeBuildInputs = [
@@ -43,17 +44,6 @@ stdenv.mkDerivation {
   ];
 
   makeFlags = [ "-j$NIX_BUILD_CORES" ];
-
-  # golpe initializes a git repo which doesn't work with the one fetched by fetchgit,
-  # so I'm initializing a new git repo here.
-  prePatch = ''
-    rm -rf .git
-    git init
-    git config --local user.email "nixbuild@example.com"
-    git config --local user.name "Nix Builder"
-    git add .
-    git commit -m "Initial commit"
-  '';
 
   buildPhase = ''
     patchShebangs golpe/
