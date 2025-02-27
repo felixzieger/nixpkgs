@@ -60,18 +60,12 @@ stdenv.mkDerivation {
     make -j$NIX_BUILD_CORES
   '';
 
-  installPhase = ''
-    mkdir -p $out/bin
-    pwd
-    ls -l .
-    cp ./strfry $out/bin/
-  '';
-
-  meta = with lib; {
+  meta = {
     description = "Strfry: A nostr relay implementation in C++";
     homepage = "https://github.com/hoytech/strfry";
-    license = licenses.mit;
-    maintainers = with maintainers; [ felixzieger ];
-    platforms = platforms.unix;
+    mainProgram = "strfry";
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ felixzieger ];
+    platforms = lib.platforms.unix;
   };
 }
